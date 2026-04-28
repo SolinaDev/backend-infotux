@@ -6,7 +6,9 @@ const bcrypt = require('bcryptjs');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: ['https://www.infotux.com.br']
+}));
 app.use(express.json());
 
 // ─── Rota de Login ───────────────────────────────────────────
