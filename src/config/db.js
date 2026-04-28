@@ -3,7 +3,9 @@ const { Pool } = require('pg');
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: false
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 const initDB = async () => {
@@ -42,12 +44,12 @@ const initDB = async () => {
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
   `);
+
   console.log('✅ PostgreSQL conectado e tabelas verificadas.');
 };
 
 initDB().catch(err => {
   console.error('❌ Erro ao conectar no banco:', err.message);
-  process.exit(1);
 });
 
 module.exports = {
