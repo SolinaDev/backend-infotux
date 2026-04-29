@@ -8,6 +8,17 @@ const pool = new Pool({
 
 const initDB = async () => {
   await pool.query(`
+    CREATE TABLE IF NOT EXISTS notas (
+      id SERIAL PRIMARY KEY,
+      titulo TEXT NOT NULL DEFAULT 'Sem título',
+      conteudo TEXT DEFAULT '',
+      cor TEXT DEFAULT '#fff9c4',
+      fixada BOOLEAN DEFAULT FALSE,
+      concluida BOOLEAN DEFAULT FALSE,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+
     CREATE TABLE IF NOT EXISTS clientes (
       id SERIAL PRIMARY KEY,
       nome TEXT NOT NULL,
