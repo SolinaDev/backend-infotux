@@ -66,6 +66,8 @@ const autenticar = (req, res, next) => {
 app.use('/clientes',     autenticar, require('./routes/clientes'));
 app.use('/agendamentos', autenticar, require('./routes/agendamentos'));
 app.use('/cobrancas',    autenticar, require('./routes/cobrancas'));
+app.use('/lembretes',    autenticar, require('./routes/lembretes'));
+app.use('/notas',        autenticar, require('./routes/notas'));
 
 // ─── Dashboard ────────────────────────────────────────────────
 app.get('/dashboard', autenticar, async (req, res) => {
